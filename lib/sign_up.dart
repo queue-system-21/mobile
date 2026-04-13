@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:queue/components/auth_button.dart';
 import 'package:queue/components/auth_wrapper.dart';
-import 'package:queue/sign_up.dart';
+import 'package:queue/sign_in.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+import 'components/auth_button.dart';
+
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   String _username = '';
   String _password = '';
 
@@ -37,7 +38,7 @@ class _SignInState extends State<SignIn> {
           },
         ),
         AuthButton(
-          text: 'Войти',
+          text: 'Зарегистрироваться',
           onPressed: () {
             print("username: $_username");
             print("password: $_password");
@@ -46,10 +47,10 @@ class _SignInState extends State<SignIn> {
         TextButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SignUp())
+              MaterialPageRoute(builder: (context) => const SignIn())
             );
           },
-          child: Text('Зарегистрироваться'),
+          child: Text('Войти'),
         ),
       ],
     );
