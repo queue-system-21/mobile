@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ErrorDialog extends StatelessWidget {
-  const ErrorDialog({super.key});
+
+  final String? message;
+
+  const ErrorDialog({super.key, this.message});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Ошибка'),
-      content: Text('Попробуйте еще раз'),
+      content: Text(message ?? 'Попробуйте еще раз'),
     );
   }
 }

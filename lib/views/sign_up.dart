@@ -21,9 +21,28 @@ class _SignUpState extends State<SignUp> {
   String _password = '';
 
   Future<void> signUp() async {
-    final uri = '/auth/sign-up';
-    final body = {'username': _username, 'password': _password};
-    await http.post(backendUri(uri), body: jsonEncode(body));
+    try {
+      final uri = '/auth/sign-up';
+      final body = {'username': _username, 'password': _password};
+      final res = await http.post(backendUri(uri), body: jsonEncode(body));
+      if (res.statusCode > 300) {
+        throw Exception('Sign up failed (${res.statusCode}): ${res.body}');
+      }
+      if (context.mounted) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const SignIn(),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        showDialog(
+          context: context,
+          builder: (_) => ErrorDialog(),
+        );
+      }
+    }
   }
 
   @override
@@ -50,22 +69,7 @@ class _SignUpState extends State<SignUp> {
         ),
         AuthButton(
           text: 'Зарегистрироваться',
-          onPressed: () async {
-            try {
-              await signUp();
-              if (context.mounted) {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SignIn(),
-                  ),
-                );
-              }
-            } catch (e) {
-              if (context.mounted) {
-                showDialog(context: context, builder: (_) => ErrorDialog());
-              }
-            }
-          },
+          onPressed: signUp,
         ),
         TextButton(
           onPressed: () {
