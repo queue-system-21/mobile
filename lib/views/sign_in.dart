@@ -18,6 +18,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return AuthWrapper(
       children: [
+        Text('Вход'),
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),

@@ -29,6 +29,11 @@ class _SignUpState extends State<SignUp> {
         throw Exception('Sign up failed (${res.statusCode}): ${res.body}');
       }
       if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Вы успешно зарегистрировались!'),
+          ),
+        );
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => const SignIn(),
@@ -49,6 +54,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return AuthWrapper(
       children: [
+        Text('Регистрация'),
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
