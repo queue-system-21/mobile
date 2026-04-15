@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:queue/components/auth_wrapper.dart';
-import 'package:queue/sign_in.dart';
+import 'package:queue/components/error_dialog.dart';
+import 'package:queue/utils/backend_uri.dart';
+import 'package:queue/views/sign_in.dart';
+import 'package:http/http.dart' as http;
 
-import 'components/auth_button.dart';
+import '../components/auth_button.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -14,6 +19,12 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   String _username = '';
   String _password = '';
+
+  Future<void> signUp() async {
+    final uri = '/auth/sign-up';
+    final body = {'username': _username, 'password': _password};
+    await http.post(backendUri(uri), body: jsonEncode(body));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +50,29 @@ class _SignUpState extends State<SignUp> {
         ),
         AuthButton(
           text: 'Зарегистрироваться',
-          onPressed: () {
-            print("username: $_username");
-            print("password: $_password");
+          onPressed: () async {
+            try {
+              await signUp();
+              if (context.mounted) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SignIn(),
+                  ),
+                );
+              }
+            } catch (e) {
+              if (context.mounted) {
+                showDialog(context: context, builder: (_) => ErrorDialog());
+              }
+            }
           },
         ),
         TextButton(
           onPressed: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const SignIn())
+              MaterialPageRoute(
+                builder: (context) => const SignIn(),
+              ),
             );
           },
           child: Text('Войти'),

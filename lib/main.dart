@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:queue/sign_in.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:queue/views/sign_in.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    dotenv.load(fileName: ".env");
     return MaterialApp(
       title: 'Flutter Demo',
       home: SignIn(),

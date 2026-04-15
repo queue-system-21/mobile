@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:queue/components/auth_button.dart';
 import 'package:queue/components/auth_wrapper.dart';
-import 'package:queue/sign_up.dart';
+import 'package:queue/views/sign_up.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
