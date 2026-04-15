@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:queue/components/auth_button.dart';
 import 'package:queue/components/auth_wrapper.dart';
+import 'package:queue/components/error_dialog.dart';
+import 'package:queue/utils/backend_uri.dart';
+import 'package:queue/views/queues.dart';
 import 'package:queue/views/sign_up.dart';
 
 class SignIn extends StatefulWidget {
@@ -13,6 +19,40 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   String _username = '';
   String _password = '';
+
+  Future<void> signIn() async {
+    try {
+      var uri = '/auth/sign-in';
+      var body = {
+        "username": _username,
+        "password": _password,
+      };
+      var res = await http.post(
+        backendUri(uri),
+        body: jsonEncode(body),
+      );
+      if (res.statusCode > 300) {
+        throw Exception('Sign in failed (${res.statusCode}): ${res.body}');
+      }
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Вы успешно авторизовались')),
+        );
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const Queues(),
+          )
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        showDialog(
+          context: context,
+          builder: (_) => const ErrorDialog(),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +79,7 @@ class _SignInState extends State<SignIn> {
         ),
         AuthButton(
           text: 'Войти',
-          onPressed: () {
-            print("username: $_username");
-            print("password: $_password");
-          },
+          onPressed: signIn,
         ),
         TextButton(
           onPressed: () {
