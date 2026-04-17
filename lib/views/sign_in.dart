@@ -2,12 +2,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:queue/components/auth_button.dart';
 import 'package:queue/components/auth_wrapper.dart';
 import 'package:queue/components/error_dialog.dart';
 import 'package:queue/utils/backend_uri.dart';
+import 'package:queue/views/admin.dart';
 import 'package:queue/views/queues.dart';
+import 'package:queue/views/reception.dart';
 import 'package:queue/views/sign_up.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -31,10 +35,28 @@ class _SignInState extends State<SignIn> {
         throw Exception('Sign in failed (${res.statusCode}): ${res.body}');
       }
 
+      final prefs = await SharedPreferences.getInstance();
+      final token = jsonDecode(res.body)['token'];
+      prefs.setString('token', token);
+      final claims = JwtDecoder.decode(token);
+      prefs.setString('username', claims['username']);
+      prefs.setString('role', claims['role']);
+
       messenger.showSnackBar(
         SnackBar(content: Text('Вы успешно авторизовались')),
       );
-      navigator.push(MaterialPageRoute(builder: (context) => const Queues()));
+      navigator.push(
+        MaterialPageRoute(
+          builder: (context) {
+            return switch (claims['role'].toString()) {
+              'user' => Queues(),
+              'receptionist' => Reception(),
+              'admin' => Admin(),
+              _ => throw UnimplementedError(),
+            };
+          },
+        ),
+      );
     } catch (e) {
       if (mounted) {
         showDialog(context: context, builder: (_) => const ErrorDialog());

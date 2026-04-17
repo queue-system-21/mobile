@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:queue/components/main_scaffold.dart';
 
 class Queues extends StatelessWidget {
   const Queues({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const MainScaffold(
       body: Center(
-        child: Text('Queues'),
+        child: Text('queues'),
       ),
     );
   }
