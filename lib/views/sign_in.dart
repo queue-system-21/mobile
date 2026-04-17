@@ -23,33 +23,21 @@ class _SignInState extends State<SignIn> {
   Future<void> signIn() async {
     try {
       var uri = '/auth/sign-in';
-      var body = {
-        "username": _username,
-        "password": _password,
-      };
-      var res = await http.post(
-        backendUri(uri),
-        body: jsonEncode(body),
-      );
+      var body = {"username": _username, "password": _password};
+      final messenger = ScaffoldMessenger.of(context);
+      final navigator = Navigator.of(context);
+      var res = await http.post(backendUri(uri), body: jsonEncode(body));
       if (res.statusCode > 300) {
         throw Exception('Sign in failed (${res.statusCode}): ${res.body}');
       }
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Вы успешно авторизовались')),
-        );
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const Queues(),
-          )
-        );
-      }
+
+      messenger.showSnackBar(
+        SnackBar(content: Text('Вы успешно авторизовались')),
+      );
+      navigator.push(MaterialPageRoute(builder: (context) => const Queues()));
     } catch (e) {
-      if (context.mounted) {
-        showDialog(
-          context: context,
-          builder: (_) => const ErrorDialog(),
-        );
+      if (mounted) {
+        showDialog(context: context, builder: (_) => const ErrorDialog());
       }
     }
   }
@@ -77,10 +65,7 @@ class _SignInState extends State<SignIn> {
             _password = password;
           },
         ),
-        AuthButton(
-          text: 'Войти',
-          onPressed: signIn,
-        ),
+        AuthButton(text: 'Войти', onPressed: signIn),
         TextButton(
           onPressed: () {
             Navigator.of(context).push(
