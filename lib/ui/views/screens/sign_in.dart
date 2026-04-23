@@ -2,16 +2,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:queue/components/auth_button.dart';
-import 'package:queue/components/auth_wrapper.dart';
-import 'package:queue/components/error_dialog.dart';
-import 'package:queue/views/admin.dart';
-import 'package:queue/views/queues.dart';
-import 'package:queue/views/reception.dart';
-import 'package:queue/views/sign_up.dart';
+import 'package:queue/ui/views/widgets/auth_button.dart';
+import 'package:queue/ui/views/widgets/auth_wrapper.dart';
+import 'package:queue/ui/views/widgets/error_dialog.dart';
+import 'package:queue/ui/views/screens/admin.dart';
+import 'package:queue/ui/views/screens/queues.dart';
+import 'package:queue/ui/views/screens/reception.dart';
+import 'package:queue/ui/views/screens/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utils/http.dart' as http;
+import '../../../data/utils/http.dart' as http;
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});

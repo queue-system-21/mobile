@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:queue/components/auth_wrapper.dart';
-import 'package:queue/components/error_dialog.dart';
-import 'package:queue/utils/backend_uri.dart';
-import 'package:queue/views/sign_in.dart';
-import 'package:http/http.dart' as http;
+import 'package:queue/ui/views/widgets/auth_wrapper.dart';
+import 'package:queue/ui/views/widgets/error_dialog.dart';
+import 'package:queue/ui/views/screens/sign_in.dart';
+import 'package:queue/data/utils/http.dart' as http;
 
-import '../components/auth_button.dart';
+import '../widgets/auth_button.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -24,11 +23,11 @@ class _SignUpState extends State<SignUp> {
     try {
       final uri = '/auth/sign-up';
       final body = {'username': _username, 'password': _password};
-      final res = await http.post(backendUri(uri), body: jsonEncode(body));
+      final res = await http.post(uri, body: jsonEncode(body));
       if (res.statusCode > 300) {
         throw Exception('Sign up failed (${res.statusCode}): ${res.body}');
       }
-      if (context.mounted) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Вы успешно зарегистрировались!'),

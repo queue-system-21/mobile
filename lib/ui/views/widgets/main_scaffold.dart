@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:queue/views/sign_in.dart';
+import 'package:queue/ui/views/screens/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScaffold extends StatelessWidget {

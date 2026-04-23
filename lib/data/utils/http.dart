@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:queue/utils/backend_uri.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String? token;
 
@@ -82,5 +82,14 @@ Future<http.Response> delete(
     headers: headers,
     body: body,
     encoding: encoding,
+  );
+}
+
+Uri backendUri(String path) {
+  return Uri(
+    scheme: dotenv.get('BACKEND_SCHEME'),
+    host: dotenv.get('BACKEND_HOST'),
+    port: dotenv.getInt('BACKEND_PORT'),
+    path: path,
   );
 }

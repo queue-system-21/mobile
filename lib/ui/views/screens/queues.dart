@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:queue/components/main_scaffold.dart';
+import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
 class Queues extends StatelessWidget {
   const Queues({super.key});

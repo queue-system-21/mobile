@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:queue/components/main_scaffold.dart';
+import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
 class Reception extends StatelessWidget {
   const Reception({super.key});

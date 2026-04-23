@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:queue/components/main_scaffold.dart';
-import 'package:queue/data/queue.dart';
-import 'package:queue/utils/http.dart' as http;
+import 'package:queue/ui/views/widgets/main_scaffold.dart';
+import 'package:queue/data/models/queue.dart';
+import 'package:queue/data/utils/http.dart' as http;
 
 class Admin extends StatefulWidget {
   final AdminViewModel vm;
