@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:queue/components/auth_button.dart';
 import 'package:queue/components/auth_wrapper.dart';
 import 'package:queue/components/error_dialog.dart';
-import 'package:queue/utils/backend_uri.dart';
 import 'package:queue/views/admin.dart';
 import 'package:queue/views/queues.dart';
 import 'package:queue/views/reception.dart';
 import 'package:queue/views/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../utils/http.dart' as http;
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -30,15 +30,15 @@ class _SignInState extends State<SignIn> {
       var body = {"username": _username, "password": _password};
       final messenger = ScaffoldMessenger.of(context);
       final navigator = Navigator.of(context);
-      var res = await http.post(backendUri(uri), body: jsonEncode(body));
+      var res = await http.post(uri, body: jsonEncode(body));
       if (res.statusCode > 300) {
         throw Exception('Sign in failed (${res.statusCode}): ${res.body}');
       }
 
       final prefs = await SharedPreferences.getInstance();
-      final token = jsonDecode(res.body)['token'];
-      prefs.setString('token', token);
-      final claims = JwtDecoder.decode(token);
+      http.token = jsonDecode(res.body)['token'];
+      prefs.setString('token', http.token!);
+      final claims = JwtDecoder.decode(http.token!);
       prefs.setString('username', claims['username']);
       prefs.setString('role', claims['role']);
 
@@ -51,7 +51,9 @@ class _SignInState extends State<SignIn> {
             return switch (claims['role'].toString()) {
               'user' => Queues(),
               'receptionist' => Reception(),
-              'admin' => Admin(),
+              'admin' => Admin(
+                vm: AdminViewModel(repo: AdminRepo()),
+              ),
               _ => throw UnimplementedError(),
             };
           },
@@ -91,7 +93,7 @@ class _SignInState extends State<SignIn> {
         TextButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SignUp())
+              MaterialPageRoute(builder: (context) => const SignUp()),
             );
           },
           child: Text('Зарегистрироваться'),
