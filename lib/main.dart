@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:queue/data/repos/queue.repo.dart';
+import 'package:queue/ui/view_models/provider.dart';
+import 'package:queue/ui/view_models/queue.view_model.dart';
 import 'package:queue/ui/views/screens/sign_in.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    Provider.multiple(
+      notifiers: [QueueViewModel(repo: QueueRepo())],
+      root: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,10 +21,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     dotenv.load(fileName: ".env");
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: SignIn(),
-    );
+    return MaterialApp(title: 'Flutter Demo', home: SignIn());
   }
 }
-

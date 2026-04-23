@@ -51,9 +51,7 @@ class _SignInState extends State<SignIn> {
             return switch (claims['role'].toString()) {
               'user' => Queues(),
               'receptionist' => Reception(),
-              'admin' => Admin(
-                vm: AdminViewModel(repo: AdminRepo()),
-              ),
+              'admin' => Admin(),
               _ => throw UnimplementedError(),
             };
           },

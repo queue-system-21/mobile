@@ -1,10 +1,11 @@
 import 'package:flutter/widgets.dart';
 
 class Provider<T extends Listenable> extends InheritedNotifier<T> {
-  const Provider({super.key, required super.child, required super.notifier});
+  const Provider({super.key, required super.notifier, required super.child});
 
   static T of<T extends Listenable>(BuildContext context) {
-    Provider<T>? provider = context.dependOnInheritedWidgetOfExactType<Provider<T>>();
+    Provider<T>? provider = context
+        .dependOnInheritedWidgetOfExactType<Provider<T>>();
 
     if (provider == null) {
       throw Exception('No provider was found in the context');
@@ -17,5 +18,19 @@ class Provider<T extends Listenable> extends InheritedNotifier<T> {
     }
 
     return notifier;
+  }
+
+  factory Provider.multiple({
+    required List<T> notifiers,
+    required StatelessWidget root,
+  }) {
+    final notifier = notifiers.removeLast();
+    if (notifiers.isEmpty) {
+      return Provider(notifier: notifier, child: root);
+    }
+    return Provider(
+      notifier: notifier,
+      child: Provider.multiple(notifiers: notifiers, root: root),
+    );
   }
 }
