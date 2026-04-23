@@ -8,7 +8,7 @@ String? token;
 Future<http.Response> get(String path, {Map<String, String>? headers}) {
   headers ??= {};
   if (token != null) {
-    headers['Authorization'] = token!;
+    headers['Authorization'] = 'Bearer ${token!}';
   }
   return http.get(backendUri(path), headers: headers);
 }
@@ -21,7 +21,7 @@ Future<http.Response> post(
 }) {
   headers ??= {};
   if (token != null) {
-    headers['Authorization'] = token!;
+    headers['Authorization'] = 'Bearer ${token!}';
   }
   return http.post(
     backendUri(path),
@@ -39,7 +39,7 @@ Future<http.Response> put(
 }) {
   headers ??= {};
   if (token != null) {
-    headers['Authorization'] = token!;
+    headers['Authorization'] = 'Bearer ${token!}';
   }
   return http.put(
     backendUri(path),
@@ -57,7 +57,7 @@ Future<http.Response> patch(
 }) {
   headers ??= {};
   if (token != null) {
-    headers['Authorization'] = token!;
+    headers['Authorization'] = 'Bearer ${token!}';
   }
   return http.patch(
     backendUri(path),
@@ -75,7 +75,7 @@ Future<http.Response> delete(
 }) {
   headers ??= {};
   if (token != null) {
-    headers['Authorization'] = token!;
+    headers['Authorization'] = 'Bearer ${token!}';
   }
   return http.delete(
     backendUri(path),

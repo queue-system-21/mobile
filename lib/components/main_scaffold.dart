@@ -4,8 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScaffold extends StatelessWidget {
   final Widget? body;
+  final Widget? floatingActionButton;
 
-  const MainScaffold({super.key, this.body});
+  const MainScaffold({super.key, this.body, this.floatingActionButton});
 
   Future<void> signOut(BuildContext context) async {
     final messenger = ScaffoldMessenger.of(context);
@@ -47,6 +48,7 @@ class MainScaffold extends StatelessWidget {
         ],
       ),
       body: body,
+      floatingActionButton: floatingActionButton,
     );
   }
 }
