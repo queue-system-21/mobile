@@ -42,8 +42,16 @@ class _AdminState extends State<Admin> {
     final queueVm = Provider.of<QueueViewModel>(context);
     return MainScaffold(
       body: ListView.separated(
-        itemBuilder: (context, index) =>
-            ListTile(title: Text(queueVm.queues[index].nameRus)),
+        itemBuilder: (context, index) => ListTile(
+          title: Text(queueVm.queues[index].nameRus),
+          trailing: IconButton(
+            onPressed: () {
+              queueVm.delete(queueVm.queues[index].id!);
+            },
+            icon: Icon(Icons.delete),
+            color: Colors.red,
+          ),
+        ),
         separatorBuilder: (context, _) => const Divider(),
         itemCount: queueVm.queues.length,
       ),

@@ -33,4 +33,17 @@ class QueueViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> delete(int id) async {
+    final q = queues.removeLast();
+    notifyListeners();
+    try {
+      await repo.delete(id);
+    } catch (e) {
+      err = true;
+      queues.add(q);
+    } finally {
+      notifyListeners();
+    }
+  }
 }

@@ -24,4 +24,12 @@ class QueueRepo {
       throw Exception('Failed to create a queue');
     }
   }
+
+  Future<void> delete(int id) async {
+    final res = await http.delete('/queue/$id');
+    if (res.statusCode > 300) {
+      throw Exception('Failed to delete the queue');
+    }
+  }
+
 }
