@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:queue/ui/views/widgets/auth_button.dart';
+import 'package:queue/ui/views/widgets/wide_button.dart';
 import 'package:queue/ui/views/widgets/auth_wrapper.dart';
 import 'package:queue/ui/views/widgets/error_dialog.dart';
 import 'package:queue/ui/views/screens/admin.dart';
@@ -87,7 +87,7 @@ class _SignInState extends State<SignIn> {
             _password = password;
           },
         ),
-        AuthButton(text: 'Войти', onPressed: signIn),
+        WideButton(text: 'Войти', onPressed: signIn),
         TextButton(
           onPressed: () {
             Navigator.of(context).push(

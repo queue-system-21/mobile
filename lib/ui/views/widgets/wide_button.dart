@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AuthButton extends StatelessWidget {
+class WideButton extends StatelessWidget {
   final void Function()? onPressed;
   final String text;
 
-  const AuthButton({super.key, this.onPressed, required this.text});
+  const WideButton({super.key, this.onPressed, required this.text});
 
   @override
   Widget build(BuildContext context) {

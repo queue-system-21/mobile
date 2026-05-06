@@ -5,8 +5,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MainScaffold extends StatelessWidget {
   final Widget? body;
   final Widget? floatingActionButton;
+  final bool? goBackIcon;
 
-  const MainScaffold({super.key, this.body, this.floatingActionButton});
+  const MainScaffold({
+    super.key,
+    this.body,
+    this.floatingActionButton,
+    this.goBackIcon,
+  });
 
   Future<void> signOut(BuildContext context) async {
     final messenger = ScaffoldMessenger.of(context);
@@ -17,9 +23,7 @@ class MainScaffold extends StatelessWidget {
       await prefs.remove('username');
       await prefs.remove('role');
       messenger.showSnackBar(SnackBar(content: Text('Вы успешно вышли')));
-      navigator.push(
-        MaterialPageRoute(builder: (context) => const SignIn())
-      );
+      navigator.push(MaterialPageRoute(builder: (context) => const SignIn()));
     } catch (e) {
       messenger.showSnackBar(SnackBar(content: Text('Не удалось выйти')));
     }
@@ -29,7 +33,7 @@ class MainScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: goBackIcon ?? false,
         actions: [
           PopupMenuButton(
             itemBuilder: (context) {

@@ -6,7 +6,7 @@ import 'package:queue/ui/views/widgets/error_dialog.dart';
 import 'package:queue/ui/views/screens/sign_in.dart';
 import 'package:queue/data/utils/http.dart' as http;
 
-import '../widgets/auth_button.dart';
+import '../widgets/wide_button.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -72,7 +72,7 @@ class _SignUpState extends State<SignUp> {
             _password = password;
           },
         ),
-        AuthButton(
+        WideButton(
           text: 'Зарегистрироваться',
           onPressed: signUp,
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:queue/ui/view_models/provider.dart';
+import 'package:queue/ui/views/widgets/create_dialog.dart';
 import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
 import '../../view_models/queue.view_model.dart';
@@ -12,12 +13,28 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
+  void _onViewModelChange() {
+    final qvm = Provider.of<QueueViewModel>(context);
+    if (qvm.err) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Ошибка')));
+      qvm.err = false;
+    }
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final qvm = Provider.of<QueueViewModel>(context);
+    qvm.addListener(_onViewModelChange);
     qvm.fetchAll();
+  }
+
+  @override
+  void dispose() {
+    Provider.of<QueueViewModel>(context).removeListener(_onViewModelChange);
+    super.dispose();
   }
 
   @override
@@ -31,7 +48,11 @@ class _AdminState extends State<Admin> {
         itemCount: queueVm.queues.length,
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => const CreateDialog()));
+        },
         child: Icon(Icons.add),
       ),
     );

@@ -19,6 +19,9 @@ class QueueRepo {
       'nameKaz': queue.nameKaz,
       'responsibleUserUsername': queue.responsibleUserUsername!,
     };
-    await http.post('/queue', body: jsonEncode(body));
+    final res = await http.post('/queue', body: jsonEncode(body));
+    if (res.statusCode > 300) {
+      throw Exception('Failed to create a queue');
+    }
   }
 }
