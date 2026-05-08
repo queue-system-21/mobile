@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:queue/ui/view_models/provider.dart';
 import 'package:queue/ui/view_models/queue.view_model.dart';
+import 'package:queue/ui/views/screens/info.dart';
 import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
 class Queues extends StatefulWidget {
@@ -19,6 +20,12 @@ class _QueuesState extends State<Queues> {
         context,
       ).showSnackBar(SnackBar(content: Text('Ошибка')));
       qvm.err = false;
+    }
+    if (qvm.joined) {
+      qvm.joined = false;
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (_) => const Info()));
     }
   }
 
@@ -39,19 +46,21 @@ class _QueuesState extends State<Queues> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      body: ListView.separated(
-        itemBuilder: (context, index) => ListTile(
-          title: Text(qvm.queues[index].nameRus),
-          trailing: IconButton(
-            onPressed: () {
-              qvm.join(index);
-            },
-            icon: Icon(Icons.add),
-          ),
-        ),
-        separatorBuilder: (context, _) => const Divider(),
-        itemCount: qvm.queues.length,
-      ),
+      body: !qvm.loading
+          ? ListView.separated(
+              itemBuilder: (context, index) => ListTile(
+                title: Text(qvm.queues[index].nameRus),
+                trailing: IconButton(
+                  onPressed: () {
+                    qvm.join(index);
+                  },
+                  icon: Icon(Icons.add),
+                ),
+              ),
+              separatorBuilder: (context, _) => const Divider(),
+              itemCount: qvm.queues.length,
+            )
+          : Center(child: CircularProgressIndicator()),
     );
   }
 }
