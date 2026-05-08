@@ -32,4 +32,11 @@ class QueueRepo {
     }
   }
 
+  Future<void> join(int queueId) async {
+    final res = await http.post('/queue/$queueId/join');
+    if (res.statusCode > 300) {
+      throw Exception('Failed to join the queue');
+    }
+  }
+
 }

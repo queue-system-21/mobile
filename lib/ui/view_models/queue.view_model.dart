@@ -8,6 +8,7 @@ class QueueViewModel extends ChangeNotifier {
 
   List<Queue> queues = [];
   bool err = false;
+  bool loading = false;
 
   QueueViewModel({required this.repo});
 
@@ -42,6 +43,16 @@ class QueueViewModel extends ChangeNotifier {
     } catch (e) {
       err = true;
       queues.add(q);
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<void> join(int index) async {
+    try {
+      await repo.join(queues[index].id!);
+    } catch (e) {
+      err = true;
     } finally {
       notifyListeners();
     }
