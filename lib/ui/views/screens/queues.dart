@@ -23,6 +23,7 @@ class _QueuesState extends State<Queues> {
     }
     if (qvm.joined) {
       qvm.joined = false;
+      qvm.loading = true;
       Navigator.of(
         context,
       ).push(MaterialPageRoute(builder: (_) => const Info()));

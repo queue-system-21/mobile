@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:queue/data/models/info.dart';
 
 import '../../data/models/queue.dart';
 import '../../data/repos/queue.repo.dart';
@@ -10,6 +11,7 @@ class QueueViewModel extends ChangeNotifier {
   bool err = false;
   bool loading = false;
   bool joined = false;
+  late Info info;
 
   QueueViewModel({required this.repo});
 
@@ -62,4 +64,16 @@ class QueueViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> getInfo() async {
+    try {
+      info = await repo.getInfo();
+    } catch (e) {
+      err = true;
+    } finally {
+      loading = false;
+      notifyListeners();
+    }
+  }
+
 }

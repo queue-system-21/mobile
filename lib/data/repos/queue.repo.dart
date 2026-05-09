@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:queue/data/models/info.dart';
+
 import '../models/queue.dart';
 import 'package:queue/data/utils/http.dart' as http;
 
@@ -37,6 +39,14 @@ class QueueRepo {
     if (res.statusCode > 300) {
       throw Exception('Failed to join the queue');
     }
+  }
+
+  Future<Info> getInfo() async {
+    final res = await http.get('/queue/info');
+    if (res.statusCode > 300) {
+      throw Exception('Failed to get info');
+    }
+    return Info.fromJson(jsonDecode(res.body));
   }
 
 }
