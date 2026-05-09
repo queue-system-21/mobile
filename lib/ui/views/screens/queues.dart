@@ -22,7 +22,6 @@ class _QueuesState extends State<Queues> {
       qvm.err = false;
     }
     if (qvm.joined) {
-      qvm.joined = false;
       qvm.loading = true;
       Navigator.of(
         context,

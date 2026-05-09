@@ -68,6 +68,7 @@ class QueueViewModel extends ChangeNotifier {
   Future<void> getInfo() async {
     try {
       info = await repo.getInfo();
+      joined = true;
     } catch (e) {
       err = true;
     } finally {

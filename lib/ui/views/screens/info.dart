@@ -18,6 +18,7 @@ class _InfoState extends State<Info> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     qvm = Provider.of<QueueViewModel>(context);
+    qvm.joined = false;
     qvm.getInfo();
   }
 
