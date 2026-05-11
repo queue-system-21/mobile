@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:queue/data/repos/auth.repo.dart';
 import 'package:queue/data/repos/queue.repo.dart';
-import 'package:queue/ui/view_models/auth.view_model.dart';
 import 'package:queue/ui/view_models/provider.dart';
 import 'package:queue/ui/view_models/queue.view_model.dart';
 import 'package:queue/ui/views/screens/sign_in.dart';
 
 void main() {
   runApp(
-    Provider(
-      notifier: QueueViewModel(repo: QueueRepo()),
-      child: Provider(
-        notifier: AuthViewModel(repo: AuthRepo()),
-        child: MyApp(),
-      ),
+    Provider.multiple(
+      notifiers: [QueueViewModel(repo: QueueRepo())],
+      root: MyApp(),
     ),
   );
 }
