@@ -14,6 +14,8 @@ class Queues extends StatefulWidget {
 class _QueuesState extends State<Queues> {
   late QueueViewModel qvm;
 
+  bool triedToFetchAll = false;
+
   void _onQvmChange() {
     if (qvm.err) {
       ScaffoldMessenger.of(
@@ -35,7 +37,12 @@ class _QueuesState extends State<Queues> {
     super.didChangeDependencies();
     qvm = Provider.of<QueueViewModel>(context);
     qvm.addListener(_onQvmChange);
-    qvm.fetchAll();
+    if (!triedToFetchAll) {
+      qvm.fetchAll();
+      setState(() {
+        triedToFetchAll = true;
+      });
+    }
   }
 
   @override
