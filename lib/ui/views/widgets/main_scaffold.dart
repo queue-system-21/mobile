@@ -40,19 +40,11 @@ class MainScaffold extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: goBackIcon ?? false,
         actions: [
-          PopupMenuButton(
-            itemBuilder: (context) {
-              return [
-                PopupMenuItem(
-                  child: TextButton(
-                    onPressed: () {
-                      signOut(context);
-                    },
-                    child: Text('Выход'),
-                  ),
-                ),
-              ];
+          IconButton(
+            onPressed: () {
+              signOut(context);
             },
+            icon: Icon(Icons.exit_to_app),
           ),
         ],
       ),
