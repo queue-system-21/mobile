@@ -11,7 +11,7 @@ class QueueViewModel extends ChangeNotifier {
   bool err = false;
   bool loading = false;
   bool joined = false;
-  late Info info;
+  Info? info;
 
   QueueViewModel({required this.repo});
 

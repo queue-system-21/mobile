@@ -14,11 +14,19 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
   late QueueViewModel qvm;
 
+  bool triedToGetInfo = false;
+
   @override
   void didChangeDependencies() {
+    print('info didChangeDependencies');
     super.didChangeDependencies();
     qvm = Provider.of<QueueViewModel>(context);
-    qvm.getInfo();
+    if (qvm.info == null && !triedToGetInfo) {
+      qvm.getInfo();
+      setState(() {
+        triedToGetInfo = true;
+      });
+    }
   }
 
   @override
@@ -30,10 +38,10 @@ class _InfoState extends State<Info> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Очередь:', style: TextStyle(fontSize: 20)),
-                  Text(qvm.info.queueNameRus, style: TextStyle(fontSize: 30)),
+                  Text(qvm.info!.queueNameRus, style: TextStyle(fontSize: 30)),
                   Text('Номер в очереди:', style: TextStyle(fontSize: 20)),
                   Text(
-                    qvm.info.number.toString(),
+                    qvm.info!.number.toString(),
                     style: TextStyle(fontSize: 70),
                   ),
                 ],
