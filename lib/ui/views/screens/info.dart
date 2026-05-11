@@ -18,7 +18,6 @@ class _InfoState extends State<Info> {
 
   @override
   void didChangeDependencies() {
-    print('info didChangeDependencies');
     super.didChangeDependencies();
     qvm = Provider.of<QueueViewModel>(context);
     if (qvm.info == null && !triedToGetInfo) {
@@ -32,7 +31,7 @@ class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      body: (!qvm.err && !qvm.loading)
+      body: (!qvm.err && !qvm.loading && qvm.info != null)
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
