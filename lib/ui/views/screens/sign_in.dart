@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:queue/ui/view_models/queue.view_model.dart';
+import 'package:queue/ui/views/screens/info.dart';
 import 'package:queue/ui/views/widgets/wide_button.dart';
 import 'package:queue/ui/views/widgets/auth_wrapper.dart';
 import 'package:queue/ui/views/widgets/error_dialog.dart';
@@ -12,6 +14,7 @@ import 'package:queue/ui/views/screens/sign_up.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../data/utils/http.dart' as http;
+import '../../view_models/provider.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -26,11 +29,12 @@ class _SignInState extends State<SignIn> {
 
   Future<void> signIn() async {
     try {
-      var uri = '/auth/sign-in';
-      var body = {"username": _username, "password": _password};
+      final uri = '/auth/sign-in';
+      final body = {"username": _username, "password": _password};
+      final qvm = Provider.of<QueueViewModel>(context);
       final messenger = ScaffoldMessenger.of(context);
       final navigator = Navigator.of(context);
-      var res = await http.post(uri, body: jsonEncode(body));
+      final res = await http.post(uri, body: jsonEncode(body));
       if (res.statusCode > 300) {
         throw Exception('Sign in failed (${res.statusCode}): ${res.body}');
       }
@@ -45,11 +49,14 @@ class _SignInState extends State<SignIn> {
       messenger.showSnackBar(
         SnackBar(content: Text('Вы успешно авторизовались')),
       );
+
+      await qvm.getInfo();
+
       navigator.push(
         MaterialPageRoute(
           builder: (context) {
             return switch (claims['role'].toString()) {
-              'user' => Queues(),
+              'user' => qvm.info != null ? Info() : Queues(),
               'receptionist' => Reception(),
               'admin' => Admin(),
               _ => throw UnimplementedError(),
