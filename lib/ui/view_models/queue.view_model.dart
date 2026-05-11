@@ -12,6 +12,7 @@ class QueueViewModel extends ChangeNotifier {
   bool loading = false;
   bool joined = false;
   Info? info;
+  bool queueEmpty = false;
 
   QueueViewModel({required this.repo});
 
@@ -76,4 +77,14 @@ class QueueViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> next() async {
+    try {
+      final next = await repo.next();
+      queueEmpty = !next;
+    } catch (e) {
+      err = true;
+    } finally {
+      notifyListeners();
+    }
+  }
 }

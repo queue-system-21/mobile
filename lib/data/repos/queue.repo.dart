@@ -49,4 +49,15 @@ class QueueRepo {
     return Info.fromJson(jsonDecode(res.body));
   }
 
+  Future<bool> next() async {
+    final res = await http.patch('/queue/next');
+    if (res.statusCode == 200) {
+       return true;
+    }
+    if (res.statusCode == 400) {
+      return false;
+    }
+    throw Exception('Failed to call next person');
+  }
+
 }
