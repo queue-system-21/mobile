@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:queue/ui/view_models/provider.dart';
 import 'package:queue/ui/views/widgets/create_dialog.dart';
+import 'package:queue/ui/views/widgets/localize_text.dart';
 import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
 import '../../view_models/queue.view_model.dart';
@@ -13,6 +14,9 @@ class Admin extends StatefulWidget {
 }
 
 class _AdminState extends State<Admin> {
+
+  bool triedToFetchAll = false;
+
   void _onViewModelChange() {
     final qvm = Provider.of<QueueViewModel>(context);
     if (qvm.err) {
@@ -28,7 +32,12 @@ class _AdminState extends State<Admin> {
     super.didChangeDependencies();
     final qvm = Provider.of<QueueViewModel>(context);
     qvm.addListener(_onViewModelChange);
-    qvm.fetchAll();
+    if (!triedToFetchAll) {
+      qvm.fetchAll();
+      setState(() {
+        triedToFetchAll = true;
+      });
+    }
   }
 
   @override
@@ -43,7 +52,7 @@ class _AdminState extends State<Admin> {
     return MainScaffold(
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
-          title: Text(queueVm.queues[index].nameRus),
+          title: LocalizeText(queueVm.queues[index]),
           trailing: IconButton(
             onPressed: () {
               queueVm.delete(queueVm.queues[index].id!);

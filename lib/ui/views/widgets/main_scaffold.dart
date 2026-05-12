@@ -4,6 +4,7 @@ import 'package:queue/ui/views/screens/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../view_models/provider.dart';
+import 'localization_button.dart';
 
 class MainScaffold extends StatelessWidget {
   final Widget? body;
@@ -40,6 +41,7 @@ class MainScaffold extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: goBackIcon ?? false,
         actions: [
+          LocalizationButton(),
           IconButton(
             onPressed: () {
               signOut(context);

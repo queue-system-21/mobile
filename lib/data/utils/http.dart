@@ -87,7 +87,7 @@ Future<http.Response> delete(
 
 Uri backendUri(String path) {
   return Uri(
-    scheme: dotenv.get('BACKEND_SCHEME'),
+    scheme: dotenv.get('BACKEND_SCHEME', fallback: 'http'),
     host: dotenv.get('BACKEND_HOST'),
     port: dotenv.getInt('BACKEND_PORT'),
     path: path,

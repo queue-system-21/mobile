@@ -32,8 +32,6 @@ class _LocalizationButtonState extends State<LocalizationButton> {
         onPressed: () {
           setState(() {
             if (_lang == 'ru') {
-              _lang = 'en';
-            } else if (_lang == 'en') {
               _lang = 'kk';
             } else if (_lang == 'kk') {
               _lang = 'ru';

@@ -21,6 +21,9 @@ class QueueViewModel extends ChangeNotifier {
       queues = await repo.fetchAll();
     } catch (e) {
       err = true;
+      if (kDebugMode) {
+        print(e);
+      }
     } finally {
       notifyListeners();
     }
