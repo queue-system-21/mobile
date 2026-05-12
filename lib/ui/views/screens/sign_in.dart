@@ -52,7 +52,9 @@ class _SignInState extends State<SignIn> {
         SnackBar(content: Text(localization!.successfulSignIn)),
       );
 
-      await qvm.getInfo();
+      if (claims['role'].toString() == 'user') {
+        await qvm.getInfo(true);
+      }
 
       navigator.push(
         MaterialPageRoute(

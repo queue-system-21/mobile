@@ -69,11 +69,16 @@ class QueueViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> getInfo() async {
+  Future<void> getInfo([bool quiet = false]) async {
     try {
       info = await repo.getInfo();
     } catch (e) {
-      err = true;
+      if (!quiet) {
+        err = true;
+      }
+      if (kDebugMode) {
+        print(e);
+      }
     } finally {
       loading = false;
       notifyListeners();
