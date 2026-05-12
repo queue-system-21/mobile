@@ -46,4 +46,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Барлығын толтырыңыз';
+
+  @override
+  String get error => 'Қателік';
 }

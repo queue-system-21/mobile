@@ -174,6 +174,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fill all fields'**
   String get fillAllFields;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:queue/l10n/app_localizations.dart';
 import 'package:queue/ui/view_models/provider.dart';
 import 'package:queue/ui/view_models/queue.view_model.dart';
 import 'package:queue/ui/views/screens/info.dart';
 import 'package:queue/ui/views/widgets/main_scaffold.dart';
+
+import '../widgets/localize_text.dart';
 
 class Queues extends StatefulWidget {
   const Queues({super.key});
@@ -20,7 +23,7 @@ class _QueuesState extends State<Queues> {
     if (qvm.err) {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Ошибка')));
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.error)));
       qvm.err = false;
     }
     if (qvm.joined) {
@@ -57,7 +60,7 @@ class _QueuesState extends State<Queues> {
       body: !qvm.loading
           ? ListView.separated(
               itemBuilder: (context, index) => ListTile(
-                title: Text(qvm.queues[index].nameRus),
+                title: LocalizeText(qvm.queues[index]),
                 trailing: IconButton(
                   onPressed: () {
                     qvm.join(index);

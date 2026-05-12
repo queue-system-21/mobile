@@ -46,4 +46,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Fill all fields';
+
+  @override
+  String get error => 'Error';
 }

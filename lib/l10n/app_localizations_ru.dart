@@ -46,4 +46,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Заполните все поля';
+
+  @override
+  String get error => 'Ошибка';
 }
