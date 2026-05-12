@@ -25,4 +25,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toSignUp => 'Sign Up';
+
+  @override
+  String get successfulSignIn => 'You have sign in';
+
+  @override
+  String get successfulSignUp => 'You have sign up';
 }

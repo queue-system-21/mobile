@@ -35,6 +35,7 @@ class _SignInState extends State<SignIn> {
       final qvm = Provider.of<QueueViewModel>(context);
       final messenger = ScaffoldMessenger.of(context);
       final navigator = Navigator.of(context);
+      final localization = AppLocalizations.of(context);
       final res = await http.post(uri, body: jsonEncode(body));
       if (res.statusCode > 300) {
         throw Exception('Sign in failed (${res.statusCode}): ${res.body}');
@@ -48,7 +49,7 @@ class _SignInState extends State<SignIn> {
       prefs.setString('role', claims['role']);
 
       messenger.showSnackBar(
-        SnackBar(content: Text('Вы успешно авторизовались')),
+        SnackBar(content: Text(localization!.successfulSignIn)),
       );
 
       await qvm.getInfo();

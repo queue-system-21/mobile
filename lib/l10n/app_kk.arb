@@ -4,5 +4,7 @@
   "username": "Қолданушының аты",
   "password": "Пароль",
   "toSignIn": "Кіру",
-  "toSignUp": "Тіркелу"
+  "toSignUp": "Тіркелу",
+  "successfulSignIn": "Авторизация сәтті өтті",
+  "successfulSignUp": "Тіркелу сәтті өтті"
 }

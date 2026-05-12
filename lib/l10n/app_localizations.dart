@@ -132,6 +132,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign Up'**
   String get toSignUp;
+
+  /// No description provided for @successfulSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'You have sign in'**
+  String get successfulSignIn;
+
+  /// No description provided for @successfulSignUp.
+  ///
+  /// In en, this message translates to:
+  /// **'You have sign up'**
+  String get successfulSignUp;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

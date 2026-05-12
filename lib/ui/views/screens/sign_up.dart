@@ -31,7 +31,7 @@ class _SignUpState extends State<SignUp> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Вы успешно зарегистрировались!'),
+            content: Text(AppLocalizations.of(context)!.successfulSignUp),
           ),
         );
         Navigator.of(context).push(

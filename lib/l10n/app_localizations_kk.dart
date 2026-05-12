@@ -25,4 +25,10 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get toSignUp => 'Тіркелу';
+
+  @override
+  String get successfulSignIn => 'Авторизация сәтті өтті';
+
+  @override
+  String get successfulSignUp => 'Тіркелу сәтті өтті';
 }

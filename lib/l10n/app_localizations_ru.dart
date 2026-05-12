@@ -25,4 +25,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get toSignUp => 'Зарегистрироваться';
+
+  @override
+  String get successfulSignIn => 'Вы успешно авторизовались';
+
+  @override
+  String get successfulSignUp => 'Вы успешно зарегистрировались';
 }

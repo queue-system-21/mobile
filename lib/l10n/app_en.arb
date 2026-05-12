@@ -4,5 +4,7 @@
   "username": "Username",
   "password": "Password",
   "toSignIn": "Sign In",
-  "toSignUp": "Sign Up"
+  "toSignUp": "Sign Up",
+  "successfulSignIn": "You have sign in",
+  "successfulSignUp": "You have sign up"
 }
