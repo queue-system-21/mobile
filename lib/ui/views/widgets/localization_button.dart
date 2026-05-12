@@ -14,13 +14,15 @@ class _LocalizationButtonState extends State<LocalizationButton> {
 
   late LocalizationViewModel _lvm;
 
+  late String _lang;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _lvm = Provider.of<LocalizationViewModel>(context);
+    _lang = _lvm.locale.languageCode;
   }
 
-  String _lang = 'ru';
 
   @override
   Widget build(BuildContext context) {

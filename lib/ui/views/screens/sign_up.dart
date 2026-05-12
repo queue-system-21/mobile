@@ -6,6 +6,7 @@ import 'package:queue/ui/views/widgets/error_dialog.dart';
 import 'package:queue/ui/views/screens/sign_in.dart';
 import 'package:queue/data/utils/http.dart' as http;
 
+import '../../../l10n/app_localizations.dart';
 import '../widgets/wide_button.dart';
 
 class SignUp extends StatefulWidget {
@@ -40,7 +41,7 @@ class _SignUpState extends State<SignUp> {
         );
       }
     } catch (e) {
-      if (context.mounted) {
+      if (mounted) {
         showDialog(
           context: context,
           builder: (_) => ErrorDialog(),
@@ -53,11 +54,11 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return AuthWrapper(
       children: [
-        Text('Регистрация'),
+        Text(AppLocalizations.of(context)!.signingUp),
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Имя пользователя',
+            hintText: AppLocalizations.of(context)!.username,
           ),
           onChanged: (username) {
             _username = username;
@@ -66,14 +67,14 @@ class _SignUpState extends State<SignUp> {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Пароль',
+            hintText: AppLocalizations.of(context)!.password,
           ),
           onChanged: (password) {
             _password = password;
           },
         ),
         WideButton(
-          text: 'Зарегистрироваться',
+          text: AppLocalizations.of(context)!.toSignUp,
           onPressed: signUp,
         ),
         TextButton(
@@ -84,7 +85,7 @@ class _SignUpState extends State<SignUp> {
               ),
             );
           },
-          child: Text('Войти'),
+          child: Text(AppLocalizations.of(context)!.toSignIn),
         ),
       ],
     );
