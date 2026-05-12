@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:queue/ui/views/widgets/localization_button.dart';
 
 class AuthWrapper extends StatelessWidget {
 
@@ -9,6 +10,11 @@ class AuthWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          LocalizationButton()
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

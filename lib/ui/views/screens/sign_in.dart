@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:queue/l10n/app_localizations.dart';
 import 'package:queue/ui/view_models/queue.view_model.dart';
 import 'package:queue/ui/views/screens/info.dart';
 import 'package:queue/ui/views/widgets/wide_button.dart';
@@ -75,11 +76,11 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return AuthWrapper(
       children: [
-        Text('Вход'),
+        Text(AppLocalizations.of(context)!.signingIn),
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Имя пользователя',
+            hintText: AppLocalizations.of(context)!.username,
           ),
           onChanged: (username) {
             _username = username;
@@ -88,20 +89,23 @@ class _SignInState extends State<SignIn> {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Пароль',
+            hintText: AppLocalizations.of(context)!.password,
           ),
           onChanged: (password) {
             _password = password;
           },
         ),
-        WideButton(text: 'Войти', onPressed: signIn),
+        WideButton(
+          text: AppLocalizations.of(context)!.toSignIn,
+          onPressed: signIn,
+        ),
         TextButton(
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const SignUp()),
-            );
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (context) => const SignUp()));
           },
-          child: Text('Зарегистрироваться'),
+          child: Text(AppLocalizations.of(context)!.toSignUp),
         ),
       ],
     );
