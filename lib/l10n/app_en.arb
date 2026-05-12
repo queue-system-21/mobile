@@ -6,5 +6,11 @@
   "toSignIn": "Sign In",
   "toSignUp": "Sign Up",
   "successfulSignIn": "You have sign in",
-  "successfulSignUp": "You have sign up"
+  "successfulSignUp": "You have sign up",
+  "successfulSignUp": "Тіркелу сәтті өтті",
+  "nameRus": "Аты (орыс)",
+  "nameKaz": "Аты (қаз)",
+  "responsibleUser": "Жауапты қолданушы",
+  "save": "Сақтау",
+  "fillAllFields": "Fill all fields"
 }

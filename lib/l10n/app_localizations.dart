@@ -142,8 +142,38 @@ abstract class AppLocalizations {
   /// No description provided for @successfulSignUp.
   ///
   /// In en, this message translates to:
-  /// **'You have sign up'**
+  /// **'Тіркелу сәтті өтті'**
   String get successfulSignUp;
+
+  /// No description provided for @nameRus.
+  ///
+  /// In en, this message translates to:
+  /// **'Аты (орыс)'**
+  String get nameRus;
+
+  /// No description provided for @nameKaz.
+  ///
+  /// In en, this message translates to:
+  /// **'Аты (қаз)'**
+  String get nameKaz;
+
+  /// No description provided for @responsibleUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Жауапты қолданушы'**
+  String get responsibleUser;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Сақтау'**
+  String get save;
+
+  /// No description provided for @fillAllFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill all fields'**
+  String get fillAllFields;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

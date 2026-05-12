@@ -6,5 +6,10 @@
   "toSignIn": "Войти",
   "toSignUp": "Зарегистрироваться",
   "successfulSignIn": "Вы успешно авторизовались",
-  "successfulSignUp": "Вы успешно зарегистрировались"
+  "successfulSignUp": "Вы успешно зарегистрировались",
+  "nameRus": "Имя (рус)",
+  "nameKaz": "Имя (каз)",
+  "responsibleUser": "Ответственный пользователь",
+  "save": "Сохранить",
+  "fillAllFields": "Заполните все поля"
 }

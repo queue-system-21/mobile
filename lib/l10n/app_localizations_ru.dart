@@ -31,4 +31,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get successfulSignUp => 'Вы успешно зарегистрировались';
+
+  @override
+  String get nameRus => 'Имя (рус)';
+
+  @override
+  String get nameKaz => 'Имя (каз)';
+
+  @override
+  String get responsibleUser => 'Ответственный пользователь';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get fillAllFields => 'Заполните все поля';
 }

@@ -6,5 +6,10 @@
   "toSignIn": "Кіру",
   "toSignUp": "Тіркелу",
   "successfulSignIn": "Авторизация сәтті өтті",
-  "successfulSignUp": "Тіркелу сәтті өтті"
+  "successfulSignUp": "Тіркелу сәтті өтті",
+  "nameRus": "Аты (орыс)",
+  "nameKaz": "Аты (қаз)",
+  "responsibleUser": "Жауапты қолданушы",
+  "save": "Сақтау",
+  "fillAllFields": "Барлығын толтырыңыз"
 }

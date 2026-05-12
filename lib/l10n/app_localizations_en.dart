@@ -30,5 +30,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get successfulSignIn => 'You have sign in';
 
   @override
-  String get successfulSignUp => 'You have sign up';
+  String get successfulSignUp => 'Тіркелу сәтті өтті';
+
+  @override
+  String get nameRus => 'Аты (орыс)';
+
+  @override
+  String get nameKaz => 'Аты (қаз)';
+
+  @override
+  String get responsibleUser => 'Жауапты қолданушы';
+
+  @override
+  String get save => 'Сақтау';
+
+  @override
+  String get fillAllFields => 'Fill all fields';
 }

@@ -31,4 +31,19 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get successfulSignUp => 'Тіркелу сәтті өтті';
+
+  @override
+  String get nameRus => 'Аты (орыс)';
+
+  @override
+  String get nameKaz => 'Аты (қаз)';
+
+  @override
+  String get responsibleUser => 'Жауапты қолданушы';
+
+  @override
+  String get save => 'Сақтау';
+
+  @override
+  String get fillAllFields => 'Барлығын толтырыңыз';
 }

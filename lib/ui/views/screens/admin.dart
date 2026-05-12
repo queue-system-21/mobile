@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:queue/ui/view_models/provider.dart';
-import 'package:queue/ui/views/widgets/create_dialog.dart';
+import 'package:queue/ui/views/screens/create_queue.dart';
 import 'package:queue/ui/views/widgets/localize_text.dart';
 import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
@@ -68,7 +68,7 @@ class _AdminState extends State<Admin> {
         onPressed: () {
           Navigator.of(
             context,
-          ).push(MaterialPageRoute(builder: (context) => const CreateDialog()));
+          ).push(MaterialPageRoute(builder: (context) => const CreateQueue()));
         },
         child: Icon(Icons.add),
       ),
