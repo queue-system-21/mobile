@@ -13,5 +13,7 @@
   "responsibleUser": "Жауапты қолданушы",
   "save": "Сақтау",
   "fillAllFields": "Fill all fields",
-  "error": "Error"
+  "error": "Error",
+  "queue": "Queue",
+  "queueNumber": "Order in queue"
 }

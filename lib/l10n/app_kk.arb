@@ -12,5 +12,7 @@
   "responsibleUser": "Жауапты қолданушы",
   "save": "Сақтау",
   "fillAllFields": "Барлығын толтырыңыз",
-  "error": "Қателік"
+  "error": "Қателік",
+  "queue": "Кезек",
+  "queueNumber": "Кезектегі орын"
 }

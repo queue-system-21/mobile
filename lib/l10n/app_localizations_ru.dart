@@ -49,4 +49,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get error => 'Ошибка';
+
+  @override
+  String get queue => 'Очередь';
+
+  @override
+  String get queueNumber => 'Номер в очереди';
 }

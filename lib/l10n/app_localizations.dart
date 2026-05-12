@@ -180,6 +180,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
+
+  /// No description provided for @queue.
+  ///
+  /// In en, this message translates to:
+  /// **'Queue'**
+  String get queue;
+
+  /// No description provided for @queueNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Order in queue'**
+  String get queueNumber;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

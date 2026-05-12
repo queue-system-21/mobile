@@ -49,4 +49,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'Error';
+
+  @override
+  String get queue => 'Queue';
+
+  @override
+  String get queueNumber => 'Order in queue';
 }

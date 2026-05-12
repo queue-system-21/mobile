@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:queue/l10n/app_localizations.dart';
 import 'package:queue/ui/view_models/queue.view_model.dart';
 import 'package:queue/ui/views/widgets/main_scaffold.dart';
 
@@ -36,9 +37,15 @@ class _InfoState extends State<Info> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Очередь:', style: TextStyle(fontSize: 20)),
+                  Text(
+                    AppLocalizations.of(context)!.queue,
+                    style: TextStyle(fontSize: 20),
+                  ),
                   Text(qvm.info!.queueNameRus, style: TextStyle(fontSize: 30)),
-                  Text('Номер в очереди:', style: TextStyle(fontSize: 20)),
+                  Text(
+                    AppLocalizations.of(context)!.queueNumber,
+                    style: TextStyle(fontSize: 20),
+                  ),
                   Text(
                     qvm.info!.number.toString(),
                     style: TextStyle(fontSize: 70),
@@ -49,7 +56,7 @@ class _InfoState extends State<Info> {
           : Center(
               child: qvm.loading
                   ? CircularProgressIndicator()
-                  : Text('Ошибка :/'),
+                  : Text('${AppLocalizations.of(context)!.error} :/'),
             ),
     );
   }

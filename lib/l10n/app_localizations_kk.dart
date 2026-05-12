@@ -49,4 +49,10 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get error => 'Қателік';
+
+  @override
+  String get queue => 'Кезек';
+
+  @override
+  String get queueNumber => 'Кезектегі орын';
 }
