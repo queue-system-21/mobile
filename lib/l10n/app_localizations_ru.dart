@@ -55,4 +55,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get queueNumber => 'Номер в очереди';
+
+  @override
+  String get updated => 'Обновлено';
 }

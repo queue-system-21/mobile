@@ -14,5 +14,6 @@
   "fillAllFields": "Заполните все поля",
   "error": "Ошибка",
   "queue": "Очередь",
-  "queueNumber": "Номер в очереди"
+  "queueNumber": "Номер в очереди",
+  "updated": "Обновлено"
 }

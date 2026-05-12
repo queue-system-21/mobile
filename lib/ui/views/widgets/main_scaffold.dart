@@ -10,12 +10,14 @@ class MainScaffold extends StatelessWidget {
   final Widget? body;
   final Widget? floatingActionButton;
   final bool? goBackIcon;
+  final List<Widget>? actions;
 
   const MainScaffold({
     super.key,
     this.body,
     this.floatingActionButton,
     this.goBackIcon,
+    this.actions
   });
 
   Future<void> signOut(BuildContext context) async {
@@ -41,6 +43,7 @@ class MainScaffold extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: goBackIcon ?? false,
         actions: [
+          ...?actions,
           LocalizationButton(),
           IconButton(
             onPressed: () {

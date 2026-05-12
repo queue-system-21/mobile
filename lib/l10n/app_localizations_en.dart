@@ -55,4 +55,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get queueNumber => 'Order in queue';
+
+  @override
+  String get updated => 'Updated';
 }

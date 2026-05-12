@@ -14,5 +14,6 @@
   "fillAllFields": "Барлығын толтырыңыз",
   "error": "Қателік",
   "queue": "Кезек",
-  "queueNumber": "Кезектегі орын"
+  "queueNumber": "Кезектегі орын",
+  "updated": "Жаңартылды"
 }

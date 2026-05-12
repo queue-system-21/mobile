@@ -55,4 +55,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get queueNumber => 'Кезектегі орын';
+
+  @override
+  String get updated => 'Жаңартылды';
 }

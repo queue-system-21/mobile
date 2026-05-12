@@ -32,6 +32,17 @@ class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
+      actions: [
+        IconButton(
+          onPressed: () {
+            qvm.getInfo();
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(AppLocalizations.of(context)!.updated)),
+            );
+          },
+          icon: Icon(Icons.update),
+        ),
+      ],
       body: (!qvm.err && !qvm.loading && qvm.info != null)
           ? Center(
               child: Column(

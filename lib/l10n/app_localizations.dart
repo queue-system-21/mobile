@@ -192,6 +192,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Order in queue'**
   String get queueNumber;
+
+  /// No description provided for @updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated'**
+  String get updated;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

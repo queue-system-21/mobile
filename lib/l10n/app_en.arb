@@ -15,5 +15,6 @@
   "fillAllFields": "Fill all fields",
   "error": "Error",
   "queue": "Queue",
-  "queueNumber": "Order in queue"
+  "queueNumber": "Order in queue",
+  "updated": "Updated"
 }
