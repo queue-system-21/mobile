@@ -16,5 +16,6 @@
   "error": "Error",
   "queue": "Queue",
   "queueNumber": "Order in queue",
-  "updated": "Updated"
+  "updated": "Updated",
+  "yourTurn": "You turn nigga"
 }

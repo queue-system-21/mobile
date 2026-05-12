@@ -58,4 +58,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get updated => 'Жаңартылды';
+
+  @override
+  String get yourTurn => 'Сіздің кезегіңіз келді';
 }

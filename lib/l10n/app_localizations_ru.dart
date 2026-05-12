@@ -58,4 +58,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get updated => 'Обновлено';
+
+  @override
+  String get yourTurn => 'Ваша очередь пришла';
 }

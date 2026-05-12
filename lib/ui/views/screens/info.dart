@@ -47,21 +47,32 @@ class _InfoState extends State<Info> {
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.queue,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Text(qvm.info!.queueNameRus, style: TextStyle(fontSize: 30)),
-                  Text(
-                    AppLocalizations.of(context)!.queueNumber,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Text(
-                    qvm.info!.number.toString(),
-                    style: TextStyle(fontSize: 70),
-                  ),
-                ],
+                children: qvm.info!.number == 0
+                    ? [
+                        Text(
+                          AppLocalizations.of(context)!.yourTurn,
+                          style: TextStyle(fontSize: 40),
+                          textAlign: TextAlign.center,
+                        ),
+                      ]
+                    : [
+                        Text(
+                          AppLocalizations.of(context)!.queue,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Text(
+                          qvm.info!.queueNameRus,
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          AppLocalizations.of(context)!.queueNumber,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Text(
+                          qvm.info!.number.toString(),
+                          style: TextStyle(fontSize: 70),
+                        ),
+                      ],
               ),
             )
           : Center(

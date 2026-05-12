@@ -58,4 +58,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updated => 'Updated';
+
+  @override
+  String get yourTurn => 'You turn nigga';
 }
